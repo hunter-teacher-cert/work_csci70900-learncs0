@@ -21,40 +21,42 @@ import java.util.*;
 
 public class Mancala {
 
-
-/*This function displays it conceptually as a Mancala board should appear rather than how it is represented by the computer in memory.*/
+/*This function displays it conceptually as a Mancala board should appear rather than how it is represented by the computer in memory.
+We include the indices for debugging purposes and also for reference purposes so that user and AI can verbalize the bucket from which they are taking stones.*/
     public static void drawBoardForUser(int[] gameBoard){
 
-System.out.print("    ");
+System.out.println("----------------------");
+
 
 System.out.println("AI");
-System.out.print("    ");System.out.print("#13 ");
+System.out.print("    "+"#13 ");
 System.out.print("#12 ");
 System.out.print("#11 ");
 System.out.print("#10 ");
-System.out.print("#9 ");
-System.out.print("#8 ");
-System.out.print("#7 ");
+System.out.print("#9  ");
+System.out.print("#8  ");
 
 System.out.print("\n");
-System.out.print("    ");
 
 
-System.out.print("["+gameBoard[13]+"]");
-System.out.print("["+gameBoard[12]+"]");
-System.out.print("["+gameBoard[11]+"]");
-System.out.print("["+gameBoard[10]+"]");
-System.out.print("["+gameBoard[9]+"]");
-System.out.print("["+gameBoard[8]+"]");
-System.out.print("<"+gameBoard[7]+">"); //right m
+System.out.print(""+"    ["+gameBoard[13]+"] ");
+System.out.print("["+gameBoard[12]+"] ");
+System.out.print("["+gameBoard[11]+"] ");
+System.out.print("["+gameBoard[10]+"] ");
+System.out.print("["+gameBoard[9]+"] ");
+System.out.print("["+gameBoard[8]+"] ");
 System.out.print("\n\n");
-System.out.print("    ");
 
+System.out.print("#0 ");
+System.out.print("<"+gameBoard[0]+">"); //left m
+System.out.print("                   ");
+System.out.print("#7 ");
+System.out.print("<"+gameBoard[7]+">");
 
-
+System.out.print("\n\n");
 System.out.println("User");
-System.out.print("    ");System.out.print("#0 ");
-System.out.print("#1 ");
+
+System.out.print("    "+"#1 ");
 System.out.print("#2 ");
 System.out.print("#3 ");
 System.out.print("#4 ");
@@ -62,13 +64,13 @@ System.out.print("#5 ");
 System.out.print("#6 ");
 
 System.out.print("\n");
-System.out.print("    ");
 
 
-//+ means concatenate - or combine - strings
-System.out.print("<"+gameBoard[0]+">"); //left m
 
-System.out.print("["+gameBoard[1]+"]");
+//+ means concatenate or combine strings
+
+
+System.out.print("    "+"["+gameBoard[1]+"]");
 System.out.print("["+gameBoard[2]+"]");
 System.out.print("["+gameBoard[3]+"]");
 System.out.print("["+gameBoard[4]+"]");
@@ -77,56 +79,17 @@ System.out.print("["+gameBoard[6]+"]");
 
 
 System.out.println();
-
-}
- /*
-    public static void drawBoard(int[] gameBoard){
-//displayMancalaBoard();
-
-    int gameBoardIndex=1;
-    System.out.print("{"+gameBoard[0]+"}");
-
-for (int row=0;row<2;row++)
-{
-if (row==0)
-for (int counter=1;counter<(gameBoard.length)/2;counter++)
-{
-  //print each element with <>
-  System.out.print("["+gameBoard[gameBoardIndex]+"]");
-gameBoardIndex++;
-  };//for
-if (row==1)
-{
-  System.out.print ("   ");
-
-for (int counter2=gameBoardIndex;counter2<(gameBoard.length - 1);counter2++)
-{
-  //print each element with <>
-  System.out.print("["+gameBoard[gameBoardIndex]+"]");
-gameBoardIndex++;
-
-
-  };//for
-
-};
-if (row<1)
-{
-System.out.println();
-};//if
-  };//for
-System.out.print("{"+gameBoard[13]+"}");
-
-
+System.out.println("----------------------");
 System.out.println();
 
 }
 
-*/
 //DEFINING the method
 public static int userChoice(int[] gameBoard)
 {
   System.out.println("Please select pod 1 -6");
   Scanner myInput = new Scanner(System.in);
+
   //what user types in is assigned to user
   int userPodChoice=myInput.nextInt();
   int counter=gameBoard[userPodChoice];
@@ -138,8 +101,8 @@ while (gameBoard[userPodChoice]>0)
 {
 moves=moves+1;
 
-gameBoard[userPodChoice+moves]=
-gameBoard[userPodChoice+moves] + 1;
+gameBoard[(userPodChoice+moves)%14]=
+gameBoard[(userPodChoice+moves)%14] + 1;
 
 //the current index + 1
 //subtract 1 from user hand as each stone is added to next pod
@@ -147,22 +110,11 @@ gameBoard[userPodChoice]=gameBoard[userPodChoice]-1;
 
 
 }//while
-
-
-
-
-  // increment bins;
-
-
-
-
-  //mancalaBoard[userPodChoice]=0;// when user makes choice everything in chosen is taken out and distributed to the other pods until done
-
-
-
-
-  //how many stones should be drooped in pods increment by 1 in manacalaboard array from original choice
-
+/*
+  increment bins;
+  taken out and distributed to the other pods until done
+  how many stones should be drooped in pods increment by 1 in manacalaboard array from original choice
+*/
   return userPodChoice;
 }//userChoice
 
@@ -196,24 +148,6 @@ gameBoard[counter]=gameBoard[counter]-1;
   return counter;
 }//userChoice
 
-  /*
-    int[] mancalaBoard = new int[12];
-
-
-
-
-public static void displayMancalaBoard()
-{
-
-for (int counter=0;counter<mancalaBoard.length;counter++)
-{
-  System.out.println("<"+mancalaBoard[counter]+">");
-
-  }
-
-
-}//end displayMancalaBoard
-*/
 
   public static void main(String[] args) {
     //create an array called mancalaBoard with 12 elements each can store an integer
@@ -224,7 +158,7 @@ int[] mancalaBoard = new int[14];
 //initialize mancalaBoard
 
 /*
-set counter variable to 0; it increases by 1 each time through for loop; is 1 lt than 12; repeat loop; is 12 lt 12 break out of loop
+set counter variable to 0; it increases by 1 each time through for loop; is 1 lt than 14; repeat loop; is 14 lt 14 break out of loop
 */
 
 
