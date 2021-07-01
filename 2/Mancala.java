@@ -1,7 +1,6 @@
 //Michelle P,Dwayne,Alexander M
 
-// if the user chooses a circle with number of stones = to
-//number of spaces left they gain extra turn
+// if the user chooses a circle with number of stones = to number of spaces left they gain extra turn
 //6,5,4,3,2,1
 
 //If(firstCircle == 6) pick that circle
@@ -11,26 +10,63 @@
 // depending on my amount in the circle that is my number of steps
 //int[] counts = new int[4];
 
+/*What we still need:
+-Extra turn if ends with Mancala
+-AI development
+-Avoiding array out of bounds errors
+*/
+
 import java.io.*;
 import java.util.*;
 
-class Mancala {
+public class Mancala {
 
 
-/*This function displays it conceptually as a Mancala board should appear
-rather than how it is represented by the computer in memory.*/
-public static void drawBoardForUser(int[] gameBoard)
-{
+/*This function displays it conceptually as a Mancala board should appear rather than how it is represented by the computer in memory.*/
+    public static void drawBoardForUser(int[] gameBoard){
 
-System.out.print("{"+gameBoard[0]+"}");
+System.out.print("    ");
+
+System.out.println("AI");
+System.out.print("    ");System.out.print("#13 ");
+System.out.print("#12 ");
+System.out.print("#11 ");
+System.out.print("#10 ");
+System.out.print("#9 ");
+System.out.print("#8 ");
+System.out.print("#7 ");
+
+System.out.print("\n");
+System.out.print("    ");
+
+
+System.out.print("["+gameBoard[13]+"]");
 System.out.print("["+gameBoard[12]+"]");
 System.out.print("["+gameBoard[11]+"]");
 System.out.print("["+gameBoard[10]+"]");
 System.out.print("["+gameBoard[9]+"]");
 System.out.print("["+gameBoard[8]+"]");
-System.out.print("["+gameBoard[7]+"]");
+System.out.print("<"+gameBoard[7]+">"); //right m
+System.out.print("\n\n");
+System.out.print("    ");
+
+
+
+System.out.println("User");
+System.out.print("    ");System.out.print("#0 ");
+System.out.print("#1 ");
+System.out.print("#2 ");
+System.out.print("#3 ");
+System.out.print("#4 ");
+System.out.print("#5 ");
+System.out.print("#6 ");
+
 System.out.print("\n");
 System.out.print("    ");
+
+
+//+ means concatenate - or combine - strings
+System.out.print("<"+gameBoard[0]+">"); //left m
 
 System.out.print("["+gameBoard[1]+"]");
 System.out.print("["+gameBoard[2]+"]");
@@ -38,17 +74,17 @@ System.out.print("["+gameBoard[3]+"]");
 System.out.print("["+gameBoard[4]+"]");
 System.out.print("["+gameBoard[5]+"]");
 System.out.print("["+gameBoard[6]+"]");
-System.out.print("{"+gameBoard[13]+"}");
+
 
 System.out.println();
 
 }
-public static void drawBoard(int[] gameBoard)
-{
+ /*
+    public static void drawBoard(int[] gameBoard){
 //displayMancalaBoard();
 
-int gameBoardIndex=1;
-System.out.print("{"+gameBoard[0]+"}");
+    int gameBoardIndex=1;
+    System.out.print("{"+gameBoard[0]+"}");
 
 for (int row=0;row<2;row++)
 {
@@ -85,6 +121,7 @@ System.out.println();
 
 }
 
+*/
 //DEFINING the method
 public static int userChoice(int[] gameBoard)
 {
@@ -129,6 +166,36 @@ gameBoard[userPodChoice]=gameBoard[userPodChoice]-1;
   return userPodChoice;
 }//userChoice
 
+
+//DEFINING the method
+public static int AIChoice(int[] gameBoard)
+{
+
+Random rn = new Random();
+int counter= rn.nextInt(6) + 8;
+
+System.out.println("I selected bucket #"+counter);
+  // increment bins;
+int moves=0;
+while (gameBoard[counter]>0)
+
+{
+moves=moves+1;
+
+gameBoard[counter+moves]=
+gameBoard[counter+moves] + 1;
+
+//the current index + 1
+//subtract 1 from user hand as each stone is added to next pod
+gameBoard[counter]=gameBoard[counter]-1;
+
+
+}//while
+
+
+  return counter;
+}//userChoice
+
   /*
     int[] mancalaBoard = new int[12];
 
@@ -151,8 +218,6 @@ for (int counter=0;counter<mancalaBoard.length;counter++)
   public static void main(String[] args) {
     //create an array called mancalaBoard with 12 elements each can store an integer
 int[] mancalaBoard = new int[14];
-int leftBin=0;
-int rightBin=0;
 
     System.out.println("Welcome to Mancala!");
 
@@ -162,12 +227,14 @@ int rightBin=0;
 set counter variable to 0; it increases by 1 each time through for loop; is 1 lt than 12; repeat loop; is 12 lt 12 break out of loop
 */
 
-mancalaBoard[0]=mancalaBoard[13]=0;
-for (int counter=1;counter<13;counter++)
+
+for (int counter=1;counter<14;counter++)
 {
-mancalaBoard[counter]=counter;// short cut to set each circle on the board to equal to 4 stones
+mancalaBoard[counter]=4;// short cut to set each circle on the board to equal to 4 stones
 
   };//for
+
+mancalaBoard[7]=mancalaBoard[0]=0; //7-user 0-Ai
 
   //diplay the displayMancalaBoard
 
@@ -180,6 +247,10 @@ drawBoardForUser(mancalaBoard);
 //USING the method
 userChoice(mancalaBoard);
 
+//
+//AIChoice(mancalaBoard);
+
+//update
 for(int counter=0;counter<14;counter++)
 stonesOnBoard+=mancalaBoard[counter];
 };//while
