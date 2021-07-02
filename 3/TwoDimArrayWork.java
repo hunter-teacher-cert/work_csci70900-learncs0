@@ -5,112 +5,218 @@
 */
 
 /**
- * Team
- * Michele Persaud
+ * Team 5
  * Eric Liu
+* Michele Persaud
  **/
 
-public class TwoDimArrayWork
-{
 
-    //print each row of 2D integer array a on its own line,
-    // using a FOR loop
-    public static void print1( int[][] a ) { //
-        for(int j = 0; j < a.length; j++) {   // loop for outer rows
-            for(int k = 0; k < a[j].length; k++) {    // loop for each row, to access each column
-                System.out.print(a[j][k] + " ");
-            }
-            System.out.print("\n");
-        }
-    }
+ /**
+    The Rules of Life:
+    Survivals:
+    * A cell with 2 or 3 living neighbours will survive for the next generation.
+    Death:
+    * Each cell with >3 neighbours will die from overpopulation.
+    * Every cell with <2 neighbours will die from isolation.
+    Birth:
+    * Each dead cell adjacent to exactly 3 living neighbours is a birth cell. It will come alive next generation.
+    NOTA BENE:  All births and deaths occur simultaneously. Together, they constitute a single generation
+ */
 
-
-    //print each row of 2D integer array a on its own line,
-    // using a FOREACH loop
-    public static void print2( int[][] a ) {
-        for( int[] j : a ) { //print a row from array a
-            for( int k : j ) { //
-                System.out.print(k + " ");
-            }
-            System.out.print("\n");
-        }
-    }
-
-    //return sum of all items in 2D integer array a
-    public static int sum1( int[][] a ) {
-        int total = 0;
-        for(int j = 0; j < a.length; j++) {   // j for rows; loop for outer rows
-            for(int k = 0; k < a[j].length; k++) {    // k for columns-loop for each row, to access each column
-                total = total + a[j][k];//sum for 0+5 = 5;  5+5 = 10 +5 = 15 + 0
-            }//end for k
-        }//end for j
-
-        return total;
-    }
-    // [5,5,5]
-    // [2,9,8]
-    // [7,9,2]
-
-    //return sum of all items in 2D integer array a
-    // using helper fxn sumRow
-    public static int sum2( int [][] m ) {
-        int total = 0;
-        for(int j = 0; j < m.length; j++) {   // j for rows; loop for outer rows
-            total = total + sumRow2(j, m);
-        }//end for j
-        return total;
-    }
+ import java.io.*;
+ import java.util.*;
 
 
-    //return sum of all items on row r of 2D integer array a
-    // using a FOR loop
-    public static int sumRow( int r, int[][] a ) {
-        int total = 0;
-        for(int k = 0; k < a[r].length; k++) {    // k for columns-loop for each row, to access each column
-            total = total + a[r][k];
-        }//end for k
+ public class Cgol
+ {
 
-        return total;
-    }
+   //initialize empty board (all cells dead)
+   public static char[][] createNewBoard(int rows, int cols) {
+     char[][] gameBoard = new char[rows][cols];
+     return (gameBoard);
+   }//end createNewBoard
 
 
-    //return sum of all items on row r of 2D integer array a
-    // using a FOREACH loop
-    public static int sumRow2( int r, int[][] m ) {
-        int total = 0;
-        for(int item : m[r]) {
-            total = total + item;
-        }//end for k
-
-        return total;
-
-    }
+   //print the board to the terminal
+   public static void printBoard(char[][] board) {
+     for(int j = 0; j < board.length; j++) {   // loop for outer rows
+       for(int k = 0; k < board[j].length; k++) {    // loop for each row, to access each column
+         System.out.print(board[j][k] + " ");
+       }
+       System.out.print("\n");
+     }
+   }
 
 
-    public static void main( String [] args )
-    {
+   //set cell (r,c) to val
+   public static void setCell(char[][] board, int r, int c, char val){
+     board[r][c] = val;
+   }
 
-        int [][] m1 = new int[4][2];
-        int [][] m2 = { {2,4,6}, {3,5,7} };
-        int [][] m3 = { {2}, {4,6}, {1,3,5} };
-        print1(m1);
-        print1(m2);
-        print1(m3);
-        print2(m1);
-        print2(m2);
-        print2(m3);
-        System.out.print("testing sum1...\n");
-        System.out.println("sum m1 : " + sum1(m1));
-        System.out.println("sum m2 : " + sum1(m2));
-        System.out.println("sum m3 : " + sum1(m3));
 
-        System.out.print("testing sum2...\n");
-        System.out.println("sum m1 : " + sum2(m1));
-        System.out.println("sum m2 : " + sum2(m2));
-        System.out.println("sum m3 : " + sum2(m3));
-                        /* ~~~v~~~~~slide~me~down~as~you~test~~~~~~~~~~~~~~~v~~~
+   //return number of living neigbours of board[r][c]
+   public static int countNeighbours(char[][] board, int r, int c) {
+     int countSurrounding = 0;
+     boolean checkFirstRow = true;
+     boolean checkLeftCol = true;
+     boolean checkLastRow = true;
+     boolean checkRightCol = true;
 
-        ~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~*/
-    }//end main()
+     // check flags on which cell to check to avoid out of range errors
+     if (r == 0) {
+       checkFirstRow = false;
+     }
+     if (c == 0) {
+       checkLeftCol = false;
+     }
+     if (r == board.length-1) {
+       checkLastRow = false;
+     }
+     if (c == board[0].length-1) {
+       checkRightCol = false;
+     }
+     // System.out.println("board width: " + board[0].length);
+     // System.out.println("checkRightCol: " + checkRightCol);
+     // System.out.println("c: " + c);
 
-}//end class TwoDimArray
+     //[- X -]
+     //[- 0 -]
+     //[X X X]
+
+     //Top row
+     if (checkFirstRow && checkLeftCol && board[r-1][c-1] == 'X') {
+       //countSurrounding = countSurrounding + 1;
+       countSurrounding += 1;
+     }
+     if (checkFirstRow && board[r-1][c] == 'X')  {
+       countSurrounding += 1;
+     }
+     if (checkFirstRow && checkRightCol && board[r-1][c+1] == 'X') {
+       countSurrounding += 1;
+     }
+     //Middle rows
+     if (checkLeftCol && board[r][c-1] == 'X') {
+       countSurrounding += 1;
+     }
+     if (checkRightCol && board[r][c+1] == 'X') {
+       countSurrounding += 1;
+     }
+     // Bottom row
+     if (checkLastRow && checkLeftCol && board[r+1][c-1] == 'X') {
+       countSurrounding += 1;
+     }
+     if (checkLastRow && board[r+1][c] == 'X' ) {
+       countSurrounding += 1;
+     }
+     if (checkLastRow && checkRightCol && board[r+1][c+1] == 'X') {
+       countSurrounding += 1;
+     }
+     return countSurrounding;
+   }
+
+
+
+
+   /**
+      precond: given a board and a cell
+      postcond: return next generation cell state based on CGOL rules
+      (alive 'X', dead ' ')
+   */
+   public static char getNextGenCell(char[][] board,int r, int c) {
+     int numNeighbors = countNeighbours(board,r,c);
+     /**
+        The Rules of Life:
+        Survivals:
+        * A cell with 2 or 3 living neighbours will survive for the next generation.
+        Death:
+        * Each cell with >3 neighbours will die from overpopulation.
+        * Every cell with <2 neighbours will die from isolation.
+        Birth:
+        * Each dead cell adjacent to exactly 3 living neighbours is a birth cell. It will come alive next generation.
+        NOTA BENE:  All births and deaths occur simultaneously. Together, they constitute a single generation
+     */
+     // current board
+     //[- X -]
+     //[- X -]
+     //[- X -]
+     // next gen board
+     //[- - -]
+     //[- - -]
+     //[- - -]
+
+     // if cell has 2 or 3 neighbors, cell survives, set to X
+     if (numNeighbors == 2) {
+       return board[r][c];
+     } else if (numNeighbors == 3) {
+       return 'X';
+     } else if (numNeighbors < 2 || numNeighbors > 3) {  // cell dies starvation or overpopulation
+       return ' ';
+     } else {
+       return ' ';
+     }
+
+     // if (board[r][c] == ' ') { // if dead
+     //   if (numNeighbors == 3){ //check if exactly 3 neighbors to birth
+     //     return 'X';         // birth
+     //   } else {
+     //     return ' ';         // dead cell stays dead
+     //   }
+     // } else if (board[r][c] == 'X') {  // if alive
+     //   if (numNeighbors < 2 || numNeighbors > 3) { // cell dies
+     //     return ' ';       // dies
+     //   } else {
+     //     return 'X';       // alive cell stays alive
+     //   }
+     // } else {
+     //   return ' ';         // catchall if not dead or alive, set to dead
+     // }
+
+   }//end genNextGenCell
+
+
+   //generate new board representing next generation
+   public static char[][] generateNextBoard(char[][] board) {
+     char newBoard[][] = new char[board.length][board[0].length];
+     for(int j = 0; j < newBoard.length; j++) {   // loop for outer rows
+       for(int k = 0; k < newBoard[j].length; k++) {    // loop for each row, to access each column
+         newBoard[j][k] = getNextGenCell(board, j, k);
+       }
+     }
+     return (newBoard);
+   }
+
+
+   public static void main( String[] args )
+   {
+     char[][] board;
+     board = createNewBoard(25,25);
+     //breathe life into some cells:
+     setCell(board, 0, 0, 'X');
+     setCell(board, 0, 1, 'X');
+     setCell(board, 1, 0, 'X');
+
+     //blinker test
+     setCell(board, 10, 10, 'X');
+     setCell(board, 11, 10, 'X');
+     setCell(board, 12, 10, 'X');
+
+     // TASK:
+     // Once your initial version is running,
+     // try out different starting configurations of living cells...
+     // (Feel free to comment out the above three lines.)
+     System.out.println("Gen X:");
+     printBoard(board);
+     System.out.println("--------------------------\n\n");
+     int temp = countNeighbours(board,1,1);
+     System.out.println("Number of neights at 1,1: " + temp);
+     board = generateNextBoard(board);
+     System.out.println("Gen X+1:");
+     printBoard(board);
+     System.out.println("--------------------------\n\n");
+
+
+
+     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+   }//end main()
+
+ }//end class
