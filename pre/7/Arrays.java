@@ -37,9 +37,33 @@ counts[3] -= 60;
 
 
 //Kjell practice
+
+//Using an expression for an array index
+//organizing the data into arrays
+//processing that data using variables as indexes
+
+class Arrays
+{
+  public static void main ( String[] args )
+  {
+    double[] val = new double[4];  // an array of double
+                                   // cells initialized to 0.0
+    val[0] = 0.12;
+    val[1] = 1.43;
+    val[2] = 2.98;
+
+    int j = 3;
+    System.out.println( "cell 3: " + val[ j   ] ); //index 3 initialized to 0
+    System.out.println( "cell 2: " + val[ j-1 ] ); //3-2 index 2 =2.98
+
+    j = j-2;
+    System.out.println( "cell 1: " + val[ j   ] );//j=3-2=1 index 1 = 1.43
+   }
+}
+
 //In the following, the array object is constructed and each cell is initialized
 //to 0. Then some assignment statements explicitly change some cells:
-
+/*
 class Arrays
 {
   public static void main ( String[] args )
