@@ -4,6 +4,7 @@
 
 //Consult:
 //https://www.geeksforgeeks.org/arrays-in-java/
+//https://www.w3schools.com/java/java_methods.asp
 
 //Exercise 1   Practice encapsulation Starting with the code
 //in Section 8.6, write a method called powArray that takes
@@ -13,7 +14,10 @@
 
 
 //8.6 Array traversal
-/*
+import java.io.*;
+import java.util.*;
+//import java.util.Arrays;
+
 class Arrays
 {
   public static void main (String[] args){
@@ -21,24 +25,71 @@ class Arrays
 
     //declare, construct, and initialize the array all in one statement:
     double[] a = {1, 2, 3, 4};
-    double[] asq = new double[]; //declare & create double type array asq; cells init to 0
+    double[] asq = new double[4]; //declare & create double type array asq; cells init to 0
+    for (int i = 0; i < 4; i++) {
+      asq[i] = a[i]; //copy eements of array a into array asq
+      asq[i] = Math.pow(a[i], 2.0);
+        }//for
+      System.out.println("vala [0] has " + a[0]);
+      System.out.println("vala [1] has " + a[1]);
+      System.out.println("vala [2] has " + a[2]);
+      System.out.println("vala [3] has " + a[3]);
+
+      System.out.println("valasq [0] has " + asq[0]);
+      System.out.println("valasq [1] has " + asq[1]);
+      System.out.println("valasq [2] has " + asq[2]);
+      System.out.println("valasq [3] has " + asq[3]);
+
+      //System.out.println("valasq [0] has " + asq[0]);
+
+      //asq[i] = a[i*2]; alternate square
+    //asq[i] = Math.pow (a[i], 2.0);
+    //System.out.println("valasq [0] has " + asq[0]);
+    //System.out.println("valasq [1] has " + asq[1]);
+    //System.out.println("valasq [2] has " + asq[2]);
+    //System.out.println("valasq [3] has " + asq[3]);
+
+    //System.out.println(Arrays.toString(asq)); //not working
+/*
+Arrays.java:32: error: method toString in class Object cannot be applied to given types;
+    System.out.println(Arrays.toString(asq)); //not working
+                             ^
+  required: no arguments
+  found:    double[]
+  reason: actual and formal argument lists differ in length
+1 error
+*/
 
 
 
 
-  }
+} //main
+
+} //class
+
+/*Output
+vala [0] has 1.0
+vala [1] has 2.0
+vala [2] has 3.0
+vala [3] has 4.0
+valasq [0] has 1.0
+valasq [1] has 4.0
+valasq [2] has 9.0
+valasq [3] has 16.0
+*/
 
 
+/*
 }
 for (int i = 0; i < a.length; i++) {
     a[i] = Math.pow(a[i], 2.0);
 }
-
+*/
 //Looping through the elements of an array is called a traversal.
 //the following method takes an int array and an integer value,
 //and it returns the index where the value appears:
 
-public static int search(double[] a, double target) {
+/*public static int search(double[] a, double target) {
     for (int i = 0; i < a.length; i++) {
         if (a[i] == target) {
             return i;
@@ -261,7 +312,7 @@ stuff[4] has 0
 //-----------------------
 //indep practice section 8.2
 
-import java.io.*;
+/*import java.io.*;
 import java.util.*;
 
 public class Arrays{
@@ -301,19 +352,19 @@ public class Arrays{
     14
     1
     -60*/
-} //main
+//} //main
 
 //display the elements of the array,
-
+/*
 public static void printArray(int[] a) {
   System.out.print("{" + a[0]);
   for (int i = 1; i < a.length; i++) {
       System.out.print(", " + a[i]);
   }
-  System.out.println("}");
+  System.out.println("}");*/
   /*output of above {1, 2, 3, 4}*/
 
-}//print array
+//}//print array
 
 
-} //class
+//} //class
