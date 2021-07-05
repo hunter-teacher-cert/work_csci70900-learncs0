@@ -266,6 +266,9 @@ import java.util.*;
 
 public class Arrays{
   public static void main ( String[] args ){
+    int[] a = {1, 2, 3, 4};
+    printArray(a); //output {1, 2, 3, 4}
+
     int[] counts = new int[4];
     counts[0] = 7;
     counts[1] = counts[0] * 2;
@@ -282,18 +285,35 @@ public class Arrays{
     //So the body of the loop is only executed when i is 0, 1, 2, and 3.
     //Each time through the loop we use i as an index
     //into the array, displaying the ith element.
-      int i = 0;
+      /*int i = 0;
       while (i < 4) {
     System.out.println(counts[i]);
-    i++;
-
+    i++;*/
     //output of above 7
     //14
     //1
     //-60
+    //can be written with for loop
+    /*for (int i = 0; i < 4; i++) {
+    System.out.println(counts[i]);*/
+    /*output of above
+    7
+    14
+    1
+    -60*/
+} //main
 
-}
+//display the elements of the array,
 
+public static void printArray(int[] a) {
+  System.out.print("{" + a[0]);
+  for (int i = 1; i < a.length; i++) {
+      System.out.print(", " + a[i]);
   }
+  System.out.println("}");
+  /*output of above {1, 2, 3, 4}*/
 
-}
+}//print array
+
+
+} //class
