@@ -1,4 +1,12 @@
-//pre06 Exercises 3, 4, 5 Chapter 7 Loops
+//I don't know how to do #5
+//I tried to look at soultions and work backwards
+//Consulted:
+//https://www.geeksforgeeks.org/math-pow-method-in-java-with-example/
+//https://www.geeksforgeeks.org/program-to-efficiently-calculate-ex/
+//https://stackoverflow.com/questions/26140238/calculate-ex-without-inbuilt-functions-in-java
+//https://introcs.cs.princeton.edu/java/13flow/index.php#1.3.6
+//Assignment:  pre06 Exercises 3, 4, 5 Chapter 7 Loops
+
 
 //Chapter 7-Ex 3 Write an iterative method to perform
 //the same calculation: power,which takes a double x and an integer n
@@ -6,6 +14,7 @@
 //A recursive definition of this operation is x^n = x · x^n−1.
 //Also, remember that anything raised to the zeroth power is 1.
 
+/*
 import java.io.*;
 import java.util.*;
 import java.lang.Math;
@@ -45,7 +54,7 @@ System.out.println("result(" + x + "^" + n +") = " + power(x, n));
 //Section 6.7 presents a recursive method that computes the
 //factorial function. Write an iterative version of factorial.
 
-
+/*
 public class Loops{
 public static int factorial(int n) {
   if (n == 0) {
@@ -54,7 +63,7 @@ public static int factorial(int n) {
       int i;
       int result = 1; //initalize
       for (i = 1; i <= n; i++){
-        result = result * i; //don't understand this
+        result = result * i;
       }
       return result;
       }
@@ -77,25 +86,133 @@ One way to calculate ex is to use the infinite series expansion:
 ex = 1 + x + x2 / 2! + x3 / 3! + x4 / 4! + …
 The ith term in the series is xi / i!.
 
-Write a method called myexp that takes x and n as parameters and estimates ex by adding the first n terms of this series. You can use the factorial method from Section 6.7 or your iterative version from the previous exercise.
+1. Write a method called myexp that takes x and n as parameters and estimates ex by
+ adding the first n terms of this series. You can use the factorial method
+ from Section 6.7 or your iterative version from the previous exercise.
 
-You can make this method more efficient if you realize that the numerator of each term is the same as its predecessor multiplied by x, and the denominator is the same as its predecessor multiplied by i. Use this observation to eliminate the use of Math.pow and factorial, and check that you get the same result.
-Write a method called check that takes a parameter, x, and displays x, myexp(x), and Math.exp(x). The output should look something like:
+2. You can make this method more efficient if you realize that the numerator
+of each term is the same as its predecessor multiplied by x,
+and the denominator is the same as its predecessor multiplied by i.
+Use this observation to eliminate the use of Math.pow and factorial,
+and check that you get the same result.
+
+3. Write a method called check that takes a parameter, x, and
+displays x, myexp(x), and Math.exp(x). The output should look something like:
 1.0     2.708333333333333     2.718281828459045
-You can use the escape sequence "\\t" to put a tab character between columns of a table.
+You can use the escape sequence "\\t" to put a tab character
+ between columns of a table.
 
-Vary the number of terms in the series (the second argument that check sends to myexp) and see the effect on the accuracy of the result. Adjust this value until the estimated value agrees with the correct answer when x is 1.
-Write a loop in main that invokes check with the values 0.1, 1.0, 10.0, and 100.0. How does the accuracy of the result vary as x varies? Compare the number of digits of agreement rather than the difference between the actual and estimated values.
-Add a loop in main that checks myexp with the values -0.1, -1.0, -10.0, and -100.0. Comment on the accuracy.
-
+4. Vary the number of terms in the series (the second argument that check
+sends to myexp) and see the effect on the accuracy of the result.
+Adjust this value until the estimated value agrees with the correct answer when x is 1.
+Write a loop in main that invokes check with the values 0.1, 1.0, 10.0, and 100.0.
+How does the accuracy of the result vary as x varies?
+Compare the number of digits of agreement rather than the difference
+between the actual and estimated values.
+Add a loop in main that checks myexp with the
+values -0.1, -1.0, -10.0, and -100.0. Comment on the accuracy.
 
 */
 
+import java.io.*;
+import java.util.*;
+import java.lang.Math;
+import java.util.Scanner;
+
+public class Loops{
+
+/*
+//1. Write a method called myexp that takes x and n as parameters and estimates ex by
+// adding the first n terms of this series.
+//x-base; n-exponent
+public static double myexp (double x, double n){
+
+//draw out pattern
+//e^x = 1+x+
+//      x^2/2!
+//      x^3/3!
+//      x^4/4!
+
+  double result = 1.0;
+  double term = 1.0;
+  int i = 1; //count from i =  to n
+  while (i <= n) {
+    term = x * i / i; //The ith term in the series is xi / i!
+    result = result + term; //add first n terms in series
+    i = i++; //increment loop by 1
+
+    System.out.println( "i is:  " + i);
+    System.out.println( "term is:  " + term);
+    System.out.println( "result is:  " + result);
+
+
+  }
+    return result;
+
+  }
+ //3. Write a method called check that takes a parameter, x, and
+ displays x, myexp(x), and Math.exp(x).
+  public static void check(double x) {
+  		System.out.println(x + Math.exp(x) + myexp(x,));
+  	}
+    */
+  //Write a loop in main that invokes check with the values 0.1, 1.0, 10.0,
+  //and 100.0. How does the accuracy of the result vary as x varies?
+  //Compare the number of digits of agreement rather than the difference
+  //between the actual and estimated values.
+
+  public static void main(String[] args) {
+    //x-base; n-exponent
+    //takes x and n as parameters
+      Scanner scan = new Scanner(System.in);
+      double n, x;
+      //result = 1;
+      int i;
+      //enter x
+      System.out.println("x and n are parameters for e^x. Enter x : ");
+      x = scan.nextDouble();
+
+      //enter n
+      System.out.println("x and n are parameters for e^x. Enter n : ");
+      n = scan.nextDouble();
+
+      System.out.println("x is " + x);
+      System.out.println("n is " + n);
+
+      System.out.println(Math.pow(x, n));
+
+}
+}
+/*
+output for
+x and n are parameters for e^x. Enter x :
+2
+x and n are parameters for e^x. Enter n :
+3
+x is 2.0
+n is 3.0
+8.0
+*/
+      //Add a loop in main that checks myexp with
+      //the values -0.1, -1.0, -10.0, and -100.0. Comment on the accuracy.
+
+      //You can use the factorial method
+      //from Section 6.7 or your iterative version from the previous exercise.
+/*
+      public static int factorial(int n) {
+        if (n == 0) {
+              return 1;
+            } else {
+              return n * factorial(n-1);
+            }
+  }
 
 
 
 
 
+
+//---------------------
 //Personal practice
 //Exercise 9 Chpt 6:  write a recursive version of power,
 //which takes a double x and an integer n and returns x^n (x power n).
