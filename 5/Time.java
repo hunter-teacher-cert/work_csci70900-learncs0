@@ -2,19 +2,31 @@
 //Victoria - vmiller77
 //Brian - brianmueller
 //Michele -learncs0
-//Victoria - vmiller77
-//Brian - brianmueller
-//Michele -learncs0
 
-// tell a Time object how to do the tasks necessary to achieve the above
+//-- tell a Time object how to do the tasks necessary to achieve the above
 
 import java.io.*;
 import java.util.*;
 
 public class Time {
 
-  // parameters are inputs when defining a method or constructor
-  // arguments are inputs when calling a method or instantiating a new object
+
+//background
+    //defining a class creates a new obj same name
+    //can write methods that take objects as parameters
+
+//vocab
+    //class:  template for objs (blueprint of house;);  creates an object with same name
+    //instance:  object belongs to object type; it's an instance of a class
+    //instantiate:  new operator creates new instances of a class
+    //object:  collection of data and methods (eg Strings (methods: charAt/substring), Scanner, System.out/in)
+    //parameters:  list of variables & methods ta store arguments
+    //variable:  named loction that store
+
+
+
+  // --parameters are inputs when defining a method or constructor
+  // --arguments are inputs when calling a method or instantiating a new object
 
   // your implementation of class Time here
   //instance variables
