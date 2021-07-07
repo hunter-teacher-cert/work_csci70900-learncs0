@@ -15,13 +15,24 @@ public class Time {
     //defining a class creates a new obj same name
     //can write methods that take objects as parameters
 
+//consultants
+  //https://www.w3schools.com/java/java_methods_param.asp
+
 //vocab
+    //argument:  expression in parens of the function; param passed to a method
     //class:  template for objs (blueprint of house;);  creates an object with same name
+    //class:  the methods that operate on an object are defined in the class for that obj
+    //constructor: method that initalizes the instance variables;
+    //constructor:  name is same as class; have no return value; omit static
     //instance:  object belongs to object type; it's an instance of a class
+    //instance variables:  aka attributes;  b/c each instance has own vars vs class vars
     //instantiate:  new operator creates new instances of a class
     //object:  collection of data and methods (eg Strings (methods: charAt/substring), Scanner, System.out/in)
-    //parameters:  list of variables & methods ta store arguments
-    //variable:  named loction that store
+    //parameters:  list of variables & methods to store arguments
+    //private:  can only be accessed inside the class
+    //public:  can be used in other classes
+    //this:  keyword refers to object being created
+    //variable:  named loction that stores a value
 
 
 
