@@ -1,6 +1,9 @@
 //Emma
 //Peter
 //Michele
+//Emma
+//Peter
+//Michele
 /**
    lab skeleton
    encapsulation / SuperArray
@@ -53,6 +56,7 @@ public class SuperArray
 
 
     //number of elements = 0 does not mean there are zero indexes,
+
     //it means the array is not yet filled
     //Need to call the add method on SuperArray object
     //data is an array of integers;
@@ -61,9 +65,27 @@ public class SuperArray
     // and value is the number
     //To set the value at a particular index, e.g. this.data[0] = 15
 
-    // add item to data array
-    this.data[numberElements] = value;
-    numberElements++; // now the number of meaningful elements increases by one
+    if (this.numberElements < this.data.length) {
+          // add item to data array
+          //(ex if number of elemement is 4 [3,5,7,9, ] and want to add 11 and 13
+          //go to the index of number of elements and set it to value  (11); now
+          //number of elements is 5; now there is no room for 13 so need to call
+          //the grow function to give us a bigger array; how many indexes do we
+          //want to add
+          this.data[numberElements] = value;
+          this.numberElements++; // now the number of meaningful elements increases by one
+    } else {
+      this.grow();
+      this.data[numberElements] = value;
+      this.numberElements++; // now the number of meaningful elements increases by one
+    }
+
+
+
+    // if (this.numberElements == this.data.length) {
+    //   this.grow();
+    // }
+
 
   }//end add()
     //add a new index and a new value;
@@ -81,6 +103,17 @@ public class SuperArray
     //increase the numberElements by 1 (3-->4)
 
   public void add( int index, int value ) {
+
+    //If you try to insert a new value in a not valid index, throw an exception
+    if (index > this.numberElements || index < 0) {
+      throw new ArrayIndexOutOfBoundsException();
+    }
+
+    //If there's not enough room in array, call the grow() method
+    if ( this.numberElements >= this.data.length) {
+      this.grow();
+    }
+
     //set the temporary index value to the last filled index
     int tempIndex = numberElements;
 
@@ -110,7 +143,7 @@ public class SuperArray
       this.data[tempIndex] = this.data[tempIndex + 1];
       tempIndex++;
     }
-    // subtract fom numElements;
+    // subtract fom numberElements;
     this.numberElements--;
 
   }
@@ -134,6 +167,19 @@ public class SuperArray
     //Return value
     return value;
   }
+
+  //go to a given index and change the value stored there (example index 2 value 15)
+  public void set(int index, int value)
+  {
+    //Set value at the given index to the value given by the parameter
+    this.data[index] = value;
+  }
+
+  public int getNumberElements()
+  {
+    return this.numberElements;
+  }
+
 
 
   public String toString()
@@ -173,15 +219,19 @@ public class SuperArray
 
   private void grow()
   {
-
     //pseudocode
     //method 1:  pass input to method (grow paren size); eg:  start at 3 want 15;
     //method 2:  default amount, e.g. add 5 empty indexes
     //start with default and get that working
     //start with array of 10 and add 10 as default within grow METHODS
     //1.  create a new array with a given Size
-    //2.  fill it with values from old array and possibly add new values
+    //2.  fill it with values from old array and  (no) possibly add new values
     //3.  set new array as default data array
+    int[] newData10 = new int[this.numberElements + 10];
+    for (int i = 0; i < this.data.length; i++) {
+      newData10[i] = this.data[i];
+    }
+    this.data = newData10;
 
     // create a new array with extra space
     // Q: How did you decide how much to increase capacity by?
@@ -190,7 +240,58 @@ public class SuperArray
 
     // point data to the new array
     // Q: How does this look when illustrated using encapsulation diagram?
+    // int[] newData = new int[(this.numberElements + 10)];
+    // for (int index = 0; index < this.numberElements; index++) {
+    //   newData[index] = this.data[index];
+    // }
+    // this.data = newData;
+
 
   }//end grow()
 
 }//end class
+
+/*
+output
+Testing default constructor.
+Testing empty print:
+[]
+
+Testing custom constructor:
+[]
+Is sa empty? true
+Is sa2 empty? true
+
+Testing toString:
+[]
+
+Testing calling add():
+[3, 4, 5, 6, 7]
+Is sa empty? false
+
+Testing get() at given index:
+Value at sa.data[0] = 3
+Value at sa.data[1] = 4
+
+Testing add at index 5, 0 and 17(end)
+[3, 4, 5, 6, 7]
+[3, 4, 5, 6, 7, 100]
+[100, 3, 4, 5, 6, 7, 100]
+
+Testing remove at 0, 5, and 15 (end)
+[3, 4, 5, 6, 7, 100]
+[3, 4, 5, 6, 7]
+Number of elements in sa: 5
+
+Print out sa3:
+[8, 9, 10, 11, 12, 7]
+Number of elements in sa3: 6
+
+Testing add(15) at sa3.data[2]
+[8, 9, 15, 10, 11, 12, 7]
+Number of elements in sa3: 7
+
+Testing set(2,100) in sa3
+[8, 9, 100, 10, 11, 12, 7]
+Number of elements in sa3: 7
+*/

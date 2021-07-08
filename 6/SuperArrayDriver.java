@@ -3,48 +3,29 @@
 //Michele
 
 import java.io.*;
-import java.util.*;
-
-public class SuperArrayDriver
+import java.util.*;public class SuperArrayDriver
 {
   public static void main( String[] args )
-  {
-
-    System.out.println("Testing default constructor.");
+  {    System.out.println("Testing default constructor.");
     SuperArray sa = new SuperArray(); //creates empty data with 10 indexes array within super array
     System.out.println("Testing empty print:");
     System.out.println(sa);
-
     System.out.println("\nTesting custom constructor:");
     SuperArray sa2 = new SuperArray(40);
-    System.out.println(sa2);
-
-    // YOUR HOMEGROWN/HOUSEMADE/ROLL-YOUR-OWN TEST METHODS HERE...
-
-    System.out.println("\nTesting isEmpty (should be true)");
+    System.out.println(sa2);    // YOUR HOMEGROWN/HOUSEMADE/ROLL-YOUR-OWN TEST METHODS HERE...    System.out.println("\nTesting isEmpty (should be true)");
     System.out.println("Is sa empty? " + sa.isEmpty());
     System.out.println("Is sa2 empty? " + sa2.isEmpty());
-
     System.out.println("\nTesting toString:");
-    System.out.println(sa.toString());
-
-
-    //precondition: newly-instantiated SuperArray of default capacity
+    System.out.println(sa.toString());    //precondition: newly-instantiated SuperArray of default capacity
     System.out.println("\nTesting calling add():");
     for (int i=3; i<8; i++) {
       sa.add(i);
-    }//for i
-
-    //Print out the new sa SuperArray and check that it is not empty
+    }//for i    //Print out the new sa SuperArray and check that it is not empty
     System.out.println(sa);
-    System.out.println("Is sa empty? " + sa.isEmpty());
-
-    //Test out get() method
+    System.out.println("Is sa empty? " + sa.isEmpty());    //Test out get() method
     System.out.println("\nTesting get() at given index:");
     System.out.println("Value at sa.data[0] = " + sa.get(0));
-    System.out.println("Value at sa.data[1] = " + sa.get(1));
-
-    //Testing out add() at specified indexes
+    System.out.println("Value at sa.data[1] = " + sa.get(1));    //Testing out add() at specified indexes
     System.out.println("\nTesting add at index 5, 0 and 17(end)");
     System.out.println(sa);
     sa.add(5, 100);
@@ -59,21 +40,95 @@ public class SuperArrayDriver
     System.out.println(sa);
     sa.remove(5);
     System.out.println(sa);
+
+    //Test out how many elements sa has
+    System.out.println("Number of elements in sa: " + sa.getNumberElements());
+
+    //Test out add() and grow() methods
+    SuperArray sa3 = new SuperArray(5);
+    for (int i = 8; i <13; i++) {
+      sa3.add(i);
+    }
+    sa3.add(7); //test to see that grow() works
+
+    //Print out sa3 after initializing its array
+    System.out.println("\nPrint out sa3:"); //print out new array
+    System.out.println(sa3); //print out new array
+    System.out.println("Number of elements in sa3: " + sa3.getNumberElements());
+
+    // SuperArray sa3 = new SuperArray(5);
+    // for (int i = 6; i < 11; i++)
+    // {
+    //   sa3.add(i);
+    // }
+    // System.out.println(sa3);
+
+    //sa3.add(15);
+    System.out.println("\nTesting add(15) at sa3.data[2]");
+    sa3.add(2, 15);
+    System.out.println(sa3);
+    System.out.println("Number of elements in sa3: " + sa3.getNumberElements());
+
+    //Test out the new set() method
+    System.out.println("\nTesting set(2,100) in sa3");
+    sa3.set(2, 100);
+    System.out.println(sa3);
+    System.out.println("Number of elements in sa3: " + sa3.getNumberElements());
+
     //sa.remove(15);
     //System.out.println(sa);
-
-  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     //precondition: newly-instantiated SuperArray of default capacity
     System.out.println("Testing overfill (calling grow() in add)");
     for (int i=0; i<15; i++) {
       sa.add(i);
-    }//for i
-
-    System.out.println(sa);
+    }//for i    System.out.println(sa);
     System.out.println(sa.isEmpty());
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+  }//main}//class SuperArrayDriver
+}
 
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*
+output
+Testing default constructor.
+Testing empty print:
+[]
 
-  }//main
+Testing custom constructor:
+[]
+Is sa empty? true
+Is sa2 empty? true
 
-}//class SuperArrayDriver
+Testing toString:
+[]
+
+Testing calling add():
+[3, 4, 5, 6, 7]
+Is sa empty? false
+
+Testing get() at given index:
+Value at sa.data[0] = 3
+Value at sa.data[1] = 4
+
+Testing add at index 5, 0 and 17(end)
+[3, 4, 5, 6, 7]
+[3, 4, 5, 6, 7, 100]
+[100, 3, 4, 5, 6, 7, 100]
+
+Testing remove at 0, 5, and 15 (end)
+[3, 4, 5, 6, 7, 100]
+[3, 4, 5, 6, 7]
+Number of elements in sa: 5
+
+Print out sa3:
+[8, 9, 10, 11, 12, 7]
+Number of elements in sa3: 6
+
+Testing add(15) at sa3.data[2]
+[8, 9, 15, 10, 11, 12, 7]
+Number of elements in sa3: 7
+
+Testing set(2,100) in sa3
+[8, 9, 100, 10, 11, 12, 7]
+Number of elements in sa3: 7
+*/
