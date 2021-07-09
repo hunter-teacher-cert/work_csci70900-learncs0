@@ -5,6 +5,115 @@
 //Consult:
 //https://www.geeksforgeeks.org/arrays-in-java/
 //https://www.w3schools.com/java/java_methods.asp
+//https://stackoverflow.com/questions/409784/whats-the-simplest-way-to-print-a-java-array
+//https://www.geeksforgeeks.org/math-pow-method-in-java-with-example/
+
+
+
+//Ex 1
+//Consult:  https://stackoverflow.com/questions/43832451/creating-an-array-method-java
+
+import java.io.*;
+import java.util.*;
+
+class Arrays {
+public static double[] powArray (double a[]){
+    for (int i = 0; i < a.length; i++) {
+         a[i] = Math.pow(a[i], 2.0);
+    }
+    return a;
+}
+
+public static void main(String[] args) {
+    double[] sqa = powArray(new double[]{1, 2, 3, 4});
+    System.out.println("sqa[0] " + sqa[0]);
+    System.out.println("sqa[1] " + sqa[1] );
+    System.out.println("sqa[2] " + sqa[2] );
+    System.out.println("sqa[3] " + sqa[3] );
+
+}
+}
+/*
+output ex 1
+sqa[0] 1.0
+sqa[1] 4.0
+sqa[2] 9.0
+sqa[3] 16.0
+*/
+
+
+//Ex 4
+//Consult
+//https://chortle.ccsu.edu/java5/Notes/chap47/ch47_14.html
+//https://csawesome.runestone.academy/runestone/books/published/csawesome/Unit6-Arrays/topic-6-3-arrays-with-foreach.html
+
+
+import java.io.*;
+import java.util.*;
+
+class Arrays {
+
+  public static int indexOfMax(int[] intarr){
+        int index = 0;
+        for (int i=1; i<intarr.length; i++){
+           if (intarr[i] > intarr[index]){
+              index = i;
+           }
+        }
+        return index;
+     }
+
+public static void main(String[] args) {
+  int[] arrayA = {0, 1, 2, 3, 4, 5};
+  System.out.println(indexOfMax(arrayA));
+
+}
+}
+/*
+output 5
+*/
+
+//Ex 5-incomplete
+//Consult
+//https://www.geeksforgeeks.org/sieve-of-eratosthenes/
+
+/*
+import java.io.*;
+import java.util.*;
+
+class Arrays {
+  */
+
+
+
+
+//personal practice -------
+//Exercise 4
+//Write a method called indexOfMax that
+//takes an array of integers and returns the index of the largest element.
+//Can you write this method using an enhanced for loop? Why or why not?
+
+
+/*
+public static int indexOfMax(int[] a, double tar) {
+    for (int i = 0; i < a.length; i++) {
+        if (a[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+public static void main(String[] args) {
+
+}
+
+
+
+
+
+
+
 
 //Exercise 1   Practice encapsulation Starting with the code
 //in Section 8.6, write a method called powArray that takes
@@ -14,7 +123,7 @@
 
 
 //8.6 Array traversal
-import java.io.*;
+/*import java.io.*;
 import java.util.*;
 //import java.util.Arrays;
 
@@ -26,9 +135,14 @@ class Arrays
     //declare, construct, and initialize the array all in one statement:
     double[] a = {1, 2, 3, 4};
     double[] asq = new double[4]; //declare & create double type array asq; cells init to 0
-    for (int i = 0; i < 4; i++) {
-      asq[i] = a[i]; //copy eements of array a into array asq
+
+    //for (int i = 0; i < 4; i++) { //only works if the array has 4 elements
+    //The last time this loop gets executed, i is a.length - 1, which is the index of the last element. When i is equal to a.length, the condition fails and the body is not executed –
+    for (int i = 0; i < a.length; i++) { // generalize the code to work with arrays of any size; replacing the magic number 4 with a.length
+
+      asq[i] = a[i]; //copy elements of array a into array asq
       asq[i] = Math.pow(a[i], 2.0);
+
         }//for
       System.out.println("vala [0] has " + a[0]);
       System.out.println("vala [1] has " + a[1]);
@@ -63,9 +177,9 @@ Arrays.java:32: error: method toString in class Object cannot be applied to give
 
 
 
-} //main
+//} //main
 
-} //class
+//} //class
 
 /*Output
 vala [0] has 1.0
@@ -368,3 +482,92 @@ public static void printArray(int[] a) {
 
 
 //} //class
+
+
+/*
+Kjell text
+*/
+/*
+import java.io.*;
+import java.util.*;
+//import java.util.Arrays;
+
+import java.util.Scanner ;
+
+class Arrays {
+
+  public static void main ( String[] args )
+  {
+
+    int[] array = new int[5];
+    int   data;
+
+    Scanner scan = new Scanner( System.in );
+
+    // input the data
+    for ( int index=0; index < array.length; index++ )
+    {
+      System.out.println( "enter an integer: " );
+      data = scan.nextInt();
+      array[ index ] = data ;
+    }
+
+    // write out the data
+    for ( int index=0; index < array.length; index++ )
+    {
+      System.out.println( "array[ " + index + " ] = " + array[ index ] );
+    }
+
+  }
+}*/
+/*
+outputenter an integer:
+1
+enter an integer:
+0
+enter an integer:
+-1
+enter an integer:
+-0
+enter an integer:
+3
+array[ 0 ] = 1
+array[ 1 ] = 0
+array[ 2 ] = -1
+array[ 3 ] = 0
+*/
+
+
+/*
+import java.io.*;
+import java.util.*;
+
+class Arrays {
+
+public static int[] make(int n) {
+    int[] a = new int[n];
+    for (int i = 0; i < n; i++) {
+        a[i] = i + 1;
+    }
+    return a;
+}
+public static void dub(int[] jub) {
+    for (int i = 0; i < jub.length; i++) {
+        jub[i] *= 2;
+    }
+}
+public static int mus(int[] zoo) {
+    int fus = 0;
+    for (int i = 0; i < zoo.length; i++) {
+        fus += zoo[i];
+    }
+    return fus;
+}
+public static void main(String[] args) {
+    int[] bob = make(5);
+    dub(bob);
+    System.out.println(mus(bob));
+}
+}
+
+*/
