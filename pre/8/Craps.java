@@ -39,14 +39,26 @@ public class Craps{
 //play that many rounds and as it plays indicate each time the shooter wins or loses.
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
+    int rounds = 0;
+    System.out.println("How many rounds? " + );
+
     int win = 0;
     int loss = 0;
     int point = 0;
+
     //If he rolls a 2,3, or 12,that’s Craps and he loses.
     if result == 2 || result == 3 || result == 12
 
     //If he rolls a 7 or 11, that’s a Natural and he wins.
-    if result == 7 || result == 11
+    else if result == 7 || result == 11
+
+
+    //the value he rolled is now called the Point
+//the shooter continues to shoot (roll) until he either
+//rolls the Point again at which point he wins or he rolls
+//a 7 at which point he loses.
+
+  else point == result
 
   //One methods named roll which accepts an integer parameter and returns
   //a random number between 1 and that number, inclusive.
@@ -59,6 +71,8 @@ public class Craps{
 //dice and the maximum value for those dice and returns the result of rolling those dice.
 public static int shoot(){
   Random rand = new Random();
+  //A Craps program, in Java
+//https://www.youtube.com/watch?v=1e_hDwz0qCc
   int d1 = rand.nextInt(6)+1;
   int d2 = rand.nextInt(6)+1;
   int result = d1+d2;
