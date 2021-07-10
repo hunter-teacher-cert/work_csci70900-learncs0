@@ -38,9 +38,11 @@ public class Craps{
 //The main program should take a parameter from the command line,
 //play that many rounds and as it plays indicate each time the shooter wins or loses.
   public static void main(String[] args) {
-    Scanner input = new Scanner(System.in);
     int rounds = 0;
-    System.out.println("How many rounds? " + );
+    Scanner in = new Scanner(System.in);
+    rounds = in.nextLine();
+    
+    System.out.println("How many rounds? " + rounds);
 
     int win = 0;
     int loss = 0;
