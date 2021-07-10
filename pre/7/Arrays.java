@@ -12,7 +12,7 @@
 
 //Ex 1
 //Consult:  https://stackoverflow.com/questions/43832451/creating-an-array-method-java
-
+/*
 import java.io.*;
 import java.util.*;
 
@@ -46,8 +46,10 @@ sqa[3] 16.0
 //Consult
 //https://chortle.ccsu.edu/java5/Notes/chap47/ch47_14.html
 //https://csawesome.runestone.academy/runestone/books/published/csawesome/Unit6-Arrays/topic-6-3-arrays-with-foreach.html
-
-
+//https://stackoverflow.com/questions/21692659/java-arrays-returning-highest-array-index
+//https://github.com/AllenDowney/thinkjavasolutions5/blob/master/chap10/Exercise10.java
+//https://github.com/ApolloZhu/Think-Java-Exercises/blob/master/Chapter8/8.4.java
+/*
 import java.io.*;
 import java.util.*;
 
@@ -69,30 +71,128 @@ public static void main(String[] args) {
 
 }
 }
+*/
 /*
 output 5
 */
 
-//Ex 5-incomplete
+//Ex 5
+//
+//The Sieve of Eratosthenes is “a simple, ancient algorithm for finding all
+//prime numbers up to any given limit,” which you can read about
+//at https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes.
+//Write a method called sieve that takes an integer parameter, n, and returns
+//a boolean array that indicates, for each number from 0 to n - 1,
+//whether the number is prime.
 //Consult
+//https://www.youtube.com/watch?v=n6Jk1yGsml8
+//https://www.youtube.com/watch?v=Hk9n0cWE2OI
+//https://www.java67.com/2014/01/how-to-check-if-given-number-is-prime.html
 //https://www.geeksforgeeks.org/sieve-of-eratosthenes/
+//https://www.mathsisfun.com/definitions/prime-number.html
+//https://mkyong.com/java/how-to-determine-a-prime-number-in-java/
+//Prime number A whole number greater than 1 that
+//can not be made by multiplying other whole numbers.
+//Example: 5 is a prime number. We cannot multiply 2, 3 or 4 together to make 5
+//When the only two factors of a number are 1 and the number,
+//then it is a Prime Number
 
-/*
+//find multiples of 2 mark as prime; then do same for 3 and so on
+//python code for primes https://www.youtube.com/watch?v=JA_YrFwE1hc
+//Java walk through: Sieve of Eratosthenes https://www.youtube.com/watch?v=n6Jk1yGsml8
+
 import java.io.*;
 import java.util.*;
+import java.util.Scanner;
+
+
 
 class Arrays {
-  */
+public static boolean sieve (int n){
+  //make an array of n variables each being true or false
+  boolean[] isPrime = new boolean[n];
+  //set all values to true-prime
+  for (int i=1; i<n; i++){
+    isPrime[i] = true;
+  }//for
+  //check numbers
+  for (int j=2; j<=n; j++){
+
+    //i is prime if not removed
+    if (isPrime[j-1]){
+      System.out.println(j);
+      //remove multiples
+      for (int k = 2*i; k<=n; k++){
+        isPrime[k-1]=false;
+      }
+    }
+  }
+}//boolean
+public static void main(String[] args){
+  //user input
+  int n;
+  Scanner in = new Scanner(System.in);
+  System.out.println("Find the prime numbers of:  ");
+  n = in.nextInt();
+
+}
+  }
+
+/*error
+Arrays.java:125: error: cannot find symbol
+      for (int k = 2*i; k<=n; k++){
+                     ^
+  symbol:   variable i
+  location: class Arrays
+1 error
+*/
 
 
+/*
+//get prime numbers 1-100 https://www.youtube.com/watch?v=TOxq8rDrYbg
+
+import java.io.*;
+import java.util.*;
+//import java.util.Scanner;
+
+class Arrays {
+public static void main (String[] args){
+  //numbers to check if prime;
+  for (int i=2; i<=100;  i++){
+    //test-can number be divided by itself; if it can be divided
+    //by another number other than itself it's not prime
+    for (int j=2; j<=i;j++){
+      if(j==i){ //if i=j number is prime so print
+        System.out.println("j=i so it's a prime number " +i);
+      } //check if there's a remainder
+      if(i%j==0){ // 7/2 =3r1; 6/2=2r0
+        break;
+      }
+    }
+  }
+
+}
+}
+*/
 
 
 //personal practice -------
+
+/* ex 5
+Scanner in = new Scanner(System.in);
+System.out.println("Find the prime numbers of:  ");
+n = sc.next.Int();
+
+
+public static void sieve (int n){
+  boolean prime[] = new boolean[n];
+  prime = false
+*/
 //Exercise 4
 //Write a method called indexOfMax that
 //takes an array of integers and returns the index of the largest element.
 //Can you write this method using an enhanced for loop? Why or why not?
-
+//https://www.mathsisfun.com/numbers/fundamental-theorem-arithmetic.html
 
 /*
 public static int indexOfMax(int[] a, double tar) {
