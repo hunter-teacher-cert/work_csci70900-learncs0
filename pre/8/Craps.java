@@ -34,6 +34,12 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Craps{
+
+//The main program should take a parameter from the command line,
+//play that many rounds and as it plays indicate each time the shooter wins or loses.
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+
   //One methods named roll which accepts an integer parameter and returns
   //a random number between 1 and that number, inclusive.
 /*  public static int roll (int n) {
