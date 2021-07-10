@@ -39,6 +39,14 @@ public class Craps{
 //play that many rounds and as it plays indicate each time the shooter wins or loses.
   public static void main(String[] args) {
     Scanner input = new Scanner(System.in);
+    int win = 0;
+    int loss = 0;
+    int point = 0;
+    //If he rolls a 2,3, or 12,that’s Craps and he loses.
+    if result == 2 || result == 3 || result == 12
+
+    //If he rolls a 7 or 11, that’s a Natural and he wins.
+    if result == 7 || result == 11
 
   //One methods named roll which accepts an integer parameter and returns
   //a random number between 1 and that number, inclusive.
@@ -56,6 +64,12 @@ public static int shoot(){
   int result = d1+d2;
   System.out.println("die rolls: " + die1 + " + " + die2 + " = " + result);
 
+  //The third method should be named round. It should accept no parameters
+  //and it should return something to indicate if the shooter of the round wins or loses.
+
+  public static round{
+
+  }
 
 
 }
