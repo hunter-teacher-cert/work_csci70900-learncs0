@@ -38,7 +38,7 @@ not an object of the Main class.)
 // I just got a 100 on my test!
 ----------
 
-Lesson Content time: 20 min from https://www.w3schools.com/java/java_methods.asp)
+Lesson Content steps 1-6 time: 20 min from https://www.w3schools.com/java/java_methods.asp)
 
 Notes for teacher:
 Parameters and Arguments:  Information can be passed to methods as parameters.
@@ -144,7 +144,7 @@ Try to write the code without looking at notes.
 
 /*
 Closing time: 10 min
-Share your code with your group and see if they can predict the output.
+/*6.  Share your code with your group and see if they can predict the output.
 */
 
 /*
