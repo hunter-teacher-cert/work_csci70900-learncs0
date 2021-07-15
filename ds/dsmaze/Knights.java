@@ -13,7 +13,7 @@ public class Knights{
 
     // the board is of ints rather than chars like the maze
     // since we want to track the moves by number
-
+//create 25 spaces
     private int[][] board;
     private int rows = 5;
     private int cols = 5;

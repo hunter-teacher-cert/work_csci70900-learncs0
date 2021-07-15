@@ -1,6 +1,7 @@
 //I don't know how to do #5
 //I tried to look at soultions and work backwards
 //Consulted:
+//https://stackoverflow.com/questions/26140238/calculate-ex-without-inbuilt-functions-in-java
 //https://www.geeksforgeeks.org/math-pow-method-in-java-with-example/
 //https://www.geeksforgeeks.org/program-to-efficiently-calculate-ex/
 //https://stackoverflow.com/questions/26140238/calculate-ex-without-inbuilt-functions-in-java

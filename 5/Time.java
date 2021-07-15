@@ -19,9 +19,12 @@ public class Time {
   //https://www.w3schools.com/java/java_methods_param.asp
 
 //vocab
+    //accessors/getters:  method to read instance variable in private class;
+    //accessors/getters: convention method that gets a variable named something is called getSomething
     //argument:  expression in parens of the function; param passed to a method
     //class:  template for objs (blueprint of house;);  creates an object with same name
     //class:  the methods that operate on an object are defined in the class for that obj
+    //client:  a class that uses objects defined in another class
     //constructor: method that initalizes the instance variables;
     //constructor:  name is same as class; have no return value; omit static
     //instance:  object belongs to object type; it's an instance of a class
@@ -32,6 +35,8 @@ public class Time {
     //private:  can only be accessed inside the class
     //public:  can be used in other classes
     //this:  keyword refers to object being created
+    //setters:  aka mutators;  modify instance variables;
+    //setters: convention, method that sets something called setSomething
     //variable:  named loction that stores a value
 
 
@@ -40,17 +45,17 @@ public class Time {
   // --arguments are inputs when calling a method or instantiating a new object
 
   // your implementation of class Time here
-  //instance variables
+  //instance variables; each time object will have it's own hour and minute
   private int hour; // 0-23
   private int minute; // 0-59
 
-  // default constructor
+  // default constructor;  this is used to access the instance variables of the object being created
   public Time(){
     this.hour = 0;
     this.minute = 0;
   }
 
-  // value constructor
+  // value constructor; changes the values of the instance variables by using input
   public Time(int _hour, int _minute){
     this.setHour(_hour);
     this.minute =_minute;
@@ -95,7 +100,7 @@ public class Time {
 
   }
 
-  //setters (mutator/writer)
+  //setters (mutator/writer); parameter is newHour - variable passed into the method
   public void setHour(int newHour){
     if(newHour < 0){ //makes sure user does not enter invalid entry
       this.hour = 0;

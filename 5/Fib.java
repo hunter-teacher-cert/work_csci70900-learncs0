@@ -20,6 +20,8 @@ public class Fib {
 
   //your implementation of fib(n) here
   // assume n >= 0 (no negative inputs)
+  //return the nth term in the sequence
+
   public static int fib(int n){
     // Base case:
       if(n == 0){ // fib(0) ==> 0

@@ -1,3 +1,10 @@
+/*
+Collaborators
+Michelle B.
+Michele P.
+Eric L.
+*/
+
 import java.io.*;
 import java.util.*;
 
