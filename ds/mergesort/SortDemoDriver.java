@@ -3,6 +3,12 @@
 // Victoria Berkowitz
 // Michele P
 
+
+// MERGE SORT
+//Brian M
+// Victoria Berkowitz
+// Michele P
+
 import java.io.*;
 import java.util.*;
 
@@ -36,8 +42,12 @@ public class SortDemoDriver {
     //
     // System.out.println("Binary search, finding 10 in sd: " + sd.binarySearch(10));
 
-    sd.testMerge();
+    System.out.println(sd);
+    sd.mergeSortTest();
+    System.out.println(sd);
 
 
   }
 }
+//[17, 6, 8, 3, 0, 18, 14, 9, 17, 4, 18, 5, 15, 17, 16]
+//[0, 3, 4, 5, 6, 8, 9, 14, 15, 16, 17, 17, 17, 18, 18]
