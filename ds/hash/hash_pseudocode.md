@@ -1,7 +1,9 @@
-----------
-Assignment instructions:
+# Assignment instructions:
+Write a program that implements an open hash table. You must implement the hash function and the following methods:
 
-hash table Folder: ds/hash
+## Eduardo, Mr. H, Mamadu, Michele
+
+* hash table Folder: ds/hash
 
 constructor(s)
 hasKey(key) - returns True if the hash table contains key
