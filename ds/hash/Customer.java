@@ -1,63 +1,88 @@
+// chaouiki hadjaahmed
+//Eduardo
+//Mamudu
+//Michele
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+
 public class Customer {
-    private Customer head; // list head
-    private Customer next;
 
-      //empty construtor
-    public Customer {
-        String lastName = "";
-        String firstName = "";
-        int phoneNumber = 0;
-        next = null;
-    }
-      //value constructor
-    public Customer(String l, String f,  int p) {
-          lastName = l;
-          firstName = f;
-          phoneNumber = p;
-          next = null;
-        }  //constructor to create a new node
-    }
+  //private Customer next;
+  private LinkedList<Data> customer;
 
-      //instance Customer
-   public Customer(String l, String f, int p, next) {
-     lastName = l;
-     firstName = f;
-     phoneNumber = p;
-     this.next = next;
-  }
-//modify the Customer
-  public void setCustomer(String l, String f,  int p) {
-    lastName = l;
-    firstName = f;
-    phoneNumber = p;
-  }
-//set up the next Customer
-  public void setNext(Customer n) {
-    next = n;
+  Data data = new Data();
+  // constructor empty
+ public Customer() {
+   customer = new LinkedList<Data>();
   }
 
-//get the head
-  public Customer getCustomer() {
-    return head;
-  }//end getValue
-
-  //get next Customer
-  public Customer getNext() {
-    return next;
-  }// end getNext
-
-  //public String toString() {
-    //return data;
-  //}//toString
-
-
-  public void printCustomerList(){
-    Customer s = this;
-    while(s != null){
-      System.out.println(s);
-      s = s.getNext();
-    }
+      //constructor with value
+  public Customer(String lN, String fN,  String pN) {
+    customer = new LinkedList<Data>();
+    data.add(lN,fN,pN);
+    customer.add(data);
+    //next= null;
   }
 
-}//class Node
+  //set  Customer
+
+
+public void set(int index, Data d){
+  customer.set(index,d);
 }
+public void addFirst(Data d){
+  customer.addFirst(d);
+}
+public void add(Data d){
+  customer.add(d);
+}
+
+public void addIndex(int index, Data d){
+  customer.add(index, d);
+}
+
+  // get customer
+  public Data get(int index) {
+    return customer.get(index);
+  }
+
+  public boolean removeCustomer(String s){
+    boolean b = false;
+    customer.element();
+    for (int i = 0; i < customer.size(); i++) {
+      data =  get(i);
+
+      if (data.contains(s)){
+        b= true;
+        customer.remove(i);
+        return b;
+      }
+    }
+    return b;
+  }
+
+  public void remove(int index) {
+    customer.remove(index);
+  }
+  public int size() {
+    return customer.size();
+  }
+  public void clear() {
+    customer.clear();
+  }
+
+  public  void printCustomer(){
+  customer.element();
+  Iterator it = customer.iterator();
+    while(it.hasNext()){
+       System.out.println(it.next());
+    }
+  }
+  public String toString(){
+    return data.get(1);
+  }
+  public int hashCode(String name) {
+    return name.hashCode() % 100;
+  }
+}//class Node
