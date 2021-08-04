@@ -2,6 +2,27 @@
 //Eduardo
 //Mamudu
 //Michele
+/*Resources we used
+https://www.geeksforgeeks.org/hashtable-remove-method-in-java/
+
+https://www.geeksforgeeks.org/differences-between-hashmap-and-hashtable-in-java/
+
+https://stackoverflow.com/questions/19535584/remove-method-in-hashtable
+
+https://chortle.ccsu.edu/java5/Notes/chap54/ch54_22.html
+
+https://beginnersbook.com/2014/07/java-add-element-at-specific-index-in-linkedlist-example/
+
+https://stackoverflow.com/questions/49087466/how-to-properly-update-linked-list
+
+
+https://www.geeksforgeeks.org/hashtable-put-method-in-java/
+
+https://beginnersbook.com/2014/07/hashtable-iterator-example-java/
+https://www.javacodeexamples.com/print-hashtable-in-java-example/3154
+https://www.educative.io/edpresso/what-is-a-hash-code-in-java
+*/
+
 import java.io.*;
 import java.util.*;
 import java.lang.*;
