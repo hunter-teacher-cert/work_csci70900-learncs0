@@ -2,7 +2,6 @@
 //Eduardo
 //Mamudu
 //Michele
-
 import java.io.*;
 import java.util.*;
 import java.lang.*;
@@ -13,7 +12,6 @@ Project: Hash*/
 
 
 public class PhoneBook{
-
   private ArrayList<Customer> phoneBook = new ArrayList<>();  // to store the customer
 
   /* Instance phonrbook 100 custoners */
@@ -53,6 +51,11 @@ public class PhoneBook{
   public void add(int index ,Customer c){
      this.phoneBook.add(index,c);
   }
+
+  public void remove(int index ){
+     this.phoneBook.remove(index);
+  }
+
 
   public void set(int index ,Customer c){
      this.phoneBook.set(index,c);
