@@ -1,0 +1,15 @@
+
+
+
+
+
+
+problem             base case                     recursive calls                what to do when returning
+
+factorial           1, if n=0                      fact(n-1)                           multiply
+
+fibonacci            0 or 1                       fib (n-1) + fib (n-2)                addition
+
+merge sort1         length = 1                     sorting the halves n/2              comparison then move
+
+binary search       middle number = target         sort left--> sort right; merge left and right? idk   return rarget
